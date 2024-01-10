@@ -1,21 +1,32 @@
 <GuiXml>
-  <Controls>
-    <TopLevelControl name="PhantasmalEscapeTracker" clampedToScreen="true" movable="true" mouseEnabled="true">
-      <Dimensions x="200" y="25" />
-      <Anchor point="BOTTOM" relativeTo="GuiRoot" relativePoint="CENTER" offsetY="-20" />
- 
+	<Controls>
+    	<TopLevelControl name="PhantasmalEscapeTrackerXML" clampedToScreen="true" movable="true" mouseEnabled="true">
+      		<Dimensions x="96" y="32" />
+      			<Anchor point="TOPLEFT" relativeTo="GUI_ROOT" relativePoint="TOPLEFT" offsetX="100" offsetY="100" />
+ 			<OnInitialized>
+          		PhantasmalEscapeTrackerXML:SetHidden(not IsUnitInCombat("player"))
+      		</OnInitialized>
+    		<OnMoveStop>
+        		PhantasmalEscapeTracker.OnLabelMoveStop()
+    		</OnMoveStop>
 
-       <OnMoveStop>
-        PhantasMalEscapeTracker.OnIndicatorMoveStop()
-      </OnMoveStop>
-
-
-      <Controls>
-        <Label name="$(parent)CounterLabel" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" color="4F81BD"
-            wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER" text="0 / 10">
-          <Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" />
-        </Label>
-      </Controls>
-    </TopLevelControl>
-  </Controls>
+      		<Controls>
+        		<Backdrop name="$(parent)BackgroundNormal">
+					<Center file="esoui/art/tooltips/ui-tooltipcenter.dds" />
+        			<Edge file="esoui/art/tooltips/ui-sliderbackdrop.dds" edgeFileWidth="64" edgeFileHeight="8" />
+        			<Dimensions x="96" y="32" />
+        			<Anchor point="CENTER" relativeTo="$(parent)" relativePoint="CENTER" />
+        		</Backdrop>
+				<Backdrop name="$(parent)BackgroundHighlight" hidden="true">
+					<Center file="esoui/art/tooltips/ui-tooltipcenter.dds" />
+        			<Edge file="esoui/art/hud/uitelvaroverlayedge.dds" edgeFileWidth="128" edgeFileHeight="16" />
+        			<Dimensions x="96" y="32" />
+        			<Anchor point="CENTER" relativeTo="$(parent)" relativePoint="CENTER" />
+        		</Backdrop>
+        			<Label name="$(parent)Label" width="96" height="32" font="ZoFontWinH2" inheritAlpha="true" color="4F81BD" wrapMode="TRUNCATE" verticalAlignment="CENTER" horizontalAlignment="CENTER" text="0 / 10">
+        			<Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" />
+				</Label>
+      		</Controls>
+		</TopLevelControl>
+	</Controls>
 </GuiXml>

@@ -4,6 +4,7 @@
 ## APIVersion: 101040
 ## AddOnVersion: 1
 ## Version: 1.0
+## SavedVariables: PhantasmalEscapeTrackerSavedVariables
 ## DependsOn: LibAddonMenu-2.0>=30
 
 ; This Add-on is not created by, affiliated with or sponsored by ZeniMax Media Inc. or its affiliates.
