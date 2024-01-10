@@ -1,0 +1,21 @@
+<GuiXml>
+  <Controls>
+    <TopLevelControl name="PhantasmalEscapeTracker" clampedToScreen="true" movable="true" mouseEnabled="true">
+      <Dimensions x="200" y="25" />
+      <Anchor point="BOTTOM" relativeTo="GuiRoot" relativePoint="CENTER" offsetY="-20" />
+ 
+
+       <OnMoveStop>
+        PhantasMalEscapeTracker.OnIndicatorMoveStop()
+      </OnMoveStop>
+
+
+      <Controls>
+        <Label name="$(parent)CounterLabel" width="200" height="25" font="ZoFontWinH1" inheritAlpha="true" color="4F81BD"
+            wrapMode="TRUNCATE" verticalAlignment="TOP" horizontalAlignment="CENTER" text="0 / 10">
+          <Anchor point="TOP" relativeTo="$(parent)" relativePoint="TOP" />
+        </Label>
+      </Controls>
+    </TopLevelControl>
+  </Controls>
+</GuiXml>
