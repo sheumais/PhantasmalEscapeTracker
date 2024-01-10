@@ -12,7 +12,7 @@ local stacks = 0
 local stack_update_request = false
 local stack_update_request_amount = 0
 local addonName = PhantasmalEscapeTracker.name
-local characterName = GetUnitName("player") .. "^Mx" -- wtf is ^Mx? 
+local characterName = GetUnitName("player") 
 
 local function UIUpdate(stackCount)
     stacks = stackCount
@@ -42,9 +42,10 @@ end
 
 
 local function PhantasmalCounter(event, result, isError, abilityName, abilityGraphic, abilityActionSlotType, sourceName, sourceType, targetName, targetType, hitValue, powerType, damageType, log, sourceUnitId, targetUnitId, abilityId, overflow)
+    sourceName = string.sub(sourceName, 1, -4)
+    targetName = string.sub(targetName, 1, -4)
     if abilityName ~= "Phantasmal Escape" then UpdateCounter(event, result, isError, abilityName, abilityGraphic, abilityActionSlotType, sourceName, sourceType, targetName, targetType, hitValue, powerType, damageType, log, sourceUnitId, targetUnitId, abilityId, overflow) return end
     if isError ~= false then return end
-    d(hitValue)
     if hitValue == 4000 or hitValue == 2500 then return end
     if hitValue == 20000 then
          hitValue = 0
