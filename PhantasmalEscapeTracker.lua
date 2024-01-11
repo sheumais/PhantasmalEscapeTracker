@@ -8,6 +8,7 @@ PhantasmalEscapeTracker = {
     },
 }
 
+local animationPulse
 local stacks = 0
 local stack_update_request = false
 local stack_update_request_amount = 0
@@ -20,9 +21,13 @@ local function UIUpdate(stackCount)
     if stacks == 10 then
         PhantasmalEscapeTrackerXMLBackgroundNormal:SetHidden(true)
         PhantasmalEscapeTrackerXMLBackgroundHighlight:SetHidden(false)
+        PhantasmalEscapeTrackerXMLNotification:SetHidden(false)
+        animationPulse:PlayFromStart()
     else 
         PhantasmalEscapeTrackerXMLBackgroundNormal:SetHidden(false)
         PhantasmalEscapeTrackerXMLBackgroundHighlight:SetHidden(true)
+        PhantasmalEscapeTrackerXMLNotification:SetHidden(true)
+        animationPulse:Stop()
     end
 end
 
@@ -44,7 +49,7 @@ end
 local function PhantasmalCounter(event, result, isError, abilityName, abilityGraphic, abilityActionSlotType, sourceName, sourceType, targetName, targetType, hitValue, powerType, damageType, log, sourceUnitId, targetUnitId, abilityId, overflow)
     sourceName = string.sub(sourceName, 1, -4)
     targetName = string.sub(targetName, 1, -4)
-    if abilityName ~= "Phantasmal Escape" then UpdateCounter(event, result, isError, abilityName, abilityGraphic, abilityActionSlotType, sourceName, sourceType, targetName, targetType, hitValue, powerType, damageType, log, sourceUnitId, targetUnitId, abilityId, overflow) return end
+    if abilityName ~= "Phantasmal Escape" and abilityName ~= "Mirage" and abilityName ~= "Blur" then UpdateCounter(event, result, isError, abilityName, abilityGraphic, abilityActionSlotType, sourceName, sourceType, targetName, targetType, hitValue, powerType, damageType, log, sourceUnitId, targetUnitId, abilityId, overflow) return end
     if isError ~= false then return end
     if hitValue == 4000 or hitValue == 2500 then return end
     if hitValue == 20000 then
@@ -70,6 +75,7 @@ local function RestorePosition()
     local alphaFragment = ZO_HUDFadeSceneFragment:New(PhantasmalEscapeTrackerXML, 250, 0)
     HUD_SCENE:AddFragment(alphaFragment)
     HUD_UI_SCENE:AddFragment(alphaFragment)
+    animationPulse = ANIMATION_MANAGER:CreateTimelineFromVirtual("NotificationPulse", PhantasmalEscapeTrackerXMLNotification)
 end
 
 local function Init(event, name)
