@@ -76,7 +76,6 @@ local function RestorePosition()
     HUD_SCENE:AddFragment(alphaFragment)
     HUD_UI_SCENE:AddFragment(alphaFragment)
     animationPulse = ANIMATION_MANAGER:CreateTimelineFromVirtual("NotificationPulse", PhantasmalEscapeTrackerXMLNotification)
-    UIUpdate(stacks)
 end
 
 local function Init(event, name)

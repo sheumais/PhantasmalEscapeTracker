@@ -3,6 +3,9 @@
     	<TopLevelControl name="PhantasmalEscapeTrackerXML" clampedToScreen="true" movable="true" mouseEnabled="true">
       		<Dimensions x="96" y="32" />
       			<Anchor point="TOPLEFT" relativeTo="GUI_ROOT" relativePoint="TOPLEFT" offsetX="100" offsetY="100" />
+ 			<OnInitialized>
+          		PhantasmalEscapeTrackerXML:SetHidden(not IsUnitInCombat("player"))
+      		</OnInitialized>
     		<OnMoveStop>
         		PhantasmalEscapeTracker.OnLabelMoveStop()
     		</OnMoveStop>
@@ -16,8 +19,8 @@
         		</Backdrop>
 				<Backdrop name="$(parent)BackgroundHighlight" hidden="true">
 					<Center file="esoui/art/tooltips/ui-tooltipcenter.dds" />
-        			<Edge file="esoui/art/crafting/crafting_tooltip_glow_edge.dds" edgeFileWidth="256" edgeFileHeight="32" />
-        			<Dimensions x="96" y="96" />
+        			<Edge file="esoui/art/hud/uitelvaroverlayedge.dds" edgeFileWidth="128" edgeFileHeight="16" />
+        			<Dimensions x="96" y="32" />
         			<Anchor point="CENTER" relativeTo="$(parent)" relativePoint="CENTER" />
         		</Backdrop>
 				<Texture name="$(parent)Notification" textureFile="esoui/art/chatwindow/chat_notification_burst.dds" hidden="true">
